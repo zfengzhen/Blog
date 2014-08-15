@@ -146,6 +146,6 @@ linux系统性能分析工具（内核2.6.3x及以上），应用程序可以利
 	* http://www.graphviz.org/pdf/dotguide.pdf
   
 ### 性能结果
-![](https://github.com/zfengzhen/Blog/blob/master/img/03o6s3fzlofbj7w/perf_graph.png)
+![](https://github.com/zfengzhen/Blog/blob/master/img/perf_graph.png)
 
 > 从生成的结果图去寻址程序或者系统性能瓶颈。

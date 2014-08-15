@@ -2,7 +2,9 @@
 
 # send  
 
-	ssize_t send(int sockfd, const void *buf, size_t len, int flags);  
+```c
+ssize_t send(int sockfd, const void *buf, size_t len, int flags); 
+``` 
 	
 ## 阻塞模式下:  
 send通过阻塞保证发送成功, 除非发送字节数大于该socket的写缓冲区, 如果成功, 则返回的字节数一定等于发送字节数.  
@@ -36,11 +38,13 @@ ET模式: unwriteable变为writeable, 也就是得一直写, 出现了EAGAIN以�
 优化:  
 如果应用层缓冲区没有数据, 则直接发送, 如果遇到EAGAIN或EWOULDBLOCK, 则加入事件监听; 如果部分发送, 则将剩余未发送的数据加入应用层缓冲区, 然后加入事件监听. 毕竟一般都是成功全部发送, 可以减少加入事件监听以及移出事件监听的消耗.  
 
-![image](https://dl.dropboxusercontent.com/s/occtx2y96cjzbka/tcp_system_call_send.jpg)  
+![image](https://github.com/zfengzhen/Blog/blob/master/img/tcp_system_call_send.jpg)  
 
 # recv
- 
-	ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+
+```c 
+ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+```
 	
 recv传入参数是希望收到的最大数据量, 返回是实际收到数据量大小. recv工作时, 先检查socket的接收缓冲区是否正在接收数据或者是否有数据, 如果正在接接收数据或者数据未空, 则一直阻塞, 当数据接收完毕的时候, recv把socket缓冲区的数据拷贝到应用层的缓冲区中. 如果socket缓冲区数据大小比应用层的大, 则需要调用多次recv才能接收完整.    
 返回0, 则表示对端主动断掉连接.  
@@ -52,7 +56,9 @@ recv会阻塞直到有数据到来, 一般单进程异步的情况下不会这�
 
 # accept
 
-	int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+```c
+int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+```
 
 ## 阻塞模式
 如果没有请求过来, 会阻塞进程.  
@@ -63,13 +69,17 @@ recv会阻塞直到有数据到来, 一般单进程异步的情况下不会这�
 
 # connect
 
-	int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+```c
+int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+```
 
 tcp三次握手:
-	
-	client ----SYN j---> server        
-	client <---SYN k, ACK j+1--- server          
-	client ----ACK k+1---> server        
+
+```	
+client ----SYN j---> server        
+client <---SYN k, ACK j+1--- server          
+client ----ACK k+1---> server  
+```      
 
 ## 阻塞模式
 1 SYN响应过满, 阻塞, 直到阻塞模式超时.  
@@ -81,9 +91,11 @@ tcp三次握手:
 加入监听事件(epoll select libevent), 当连接成功时, 返回socket可写; 单连接失败时, 返回socket可读可写.  
 正确的作法, 当返回socket可写时, 需要调用getsockopt来判断连接是否成功.  
 
-	int error = 0;
-	unsigned int len = sizeof(error);
-	if (getsockopt(socket, SOL_SOCKET, SO_ERROR, &error, &len) == 0) {
-		// 建立成功
-		return 0;
-	}
+```c
+int error = 0;
+unsigned int len = sizeof(error);
+if (getsockopt(socket, SOL_SOCKET, SO_ERROR, &error, &len) == 0) {
+	// 建立成功
+	return 0;
+}
+```

@@ -15,7 +15,7 @@ cocos2dx-lua以及quick都大规模采用tolua++进行绑定,  对于大规模�
 1 在项目文件中tolua++自动生成的绑定文件中的tolua_xxx_open(L)函数注册类绑定(其中xxx为pkg文件名)
 2 tolua_xxx_open(L)函数调用了tolua_open(L), tolua_reg_types, tolua_cclass, tolua_beginmodule, tolua_function, tolua_variable, tolua_endmodule等函数进行类的绑定, 其中tolua_reg_types是自动绑定文件生成的函数, 其他都是tolua++库函数
 3 tolua_open(L) 建立相应的全局注册表, 包括tolua_opened, tolua_peers, tolua_ubox,    tolua_super, tolua_gc
-4 tolua_reg_types主要调用tolua_usertype注册该pkg文件下的所有C++类型的metatable
+4 tolua_reg_types主要调用tolua_usertype注册该pkg文件下的所有C++类型的metatabl
 5 tolua_usertype调用tolua_newmetatable 注册C++类型metatable和const C++类型metatable
 6 tolua_usertype调用tolua_classevents注册C++类型metatable中的__add, __call, __div, __eq, __gc, __index, __le, __lt, __mul, __newindex, __sub方法
 7 tolua_cclass设置父子关系, 以及对象回收函数(为tolua++自动生成的一个调用delete的C函数)

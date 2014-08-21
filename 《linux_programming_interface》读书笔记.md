@@ -1,4 +1,4 @@
-# 《Linux Programming Iterface》读书笔记
+# 《Linux Programming Interface》读书笔记
 
 ## 4 file I/O:the universal I/O model
 ![](https://github.com/zfengzhen/Blog/blob/master/img/lpi_4_1.png)  

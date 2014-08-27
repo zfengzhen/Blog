@@ -77,7 +77,7 @@ extend Msg {
 }
 ```
 
-## 不采用extension
+## 不采用extension, 业务逻辑包不用MsgBody嵌套
 cs_msg.proto   
 
 ```
@@ -100,9 +100,10 @@ cs_msg.proto
 // 2 业务逻辑包并没有通过一个类似于MsgBody去包装, 
 //   这样的话各个模块定义依然分离, 而且减少了一层包装, 提高性能
 // 3 简单的使用, 脚本语言(Python, Lua)都支持这些基本功能
+// 4 键值对也可以采用字段tag, <kLoginReqFieldNumber, message LoginReq>
 //
 // 不足:
-// 1 需要维护一套<cmd, 具体业务逻辑包>的键值对
+// 1 业务请求包只能通过char*指针进行传参
 
 package ProtoCs;
 
@@ -162,9 +163,8 @@ message LoginRes {
 // 2 简单的使用, 脚本语言(Python, Lua)都支持这些基本功能
 // 3 将CS, SS的MsgHead和MsgBody的分开定义,  
 //   不过度的把SS协议字段暴露给CS, 交给CONNSVR去转换
+// 4 键值对也可以采用字段tag, <kLoginReqFieldNumber, message LoginReq>
 //
-// 不足:
-// 1 需要维护一套<cmd, 具体业务逻辑包>的键值对
 ```
 
 cs_msg_head.proto  

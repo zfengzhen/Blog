@@ -4,6 +4,7 @@ Blog
 My Blog &amp; Thanks Github!
 
 ## 目录
+- [玩家多终端登录踢下线小结](https://github.com/zfengzhen/Blog/blob/master/玩家多终端登录踢下线小结.md)
 - [后台常用系统调用性能总结](https://github.com/zfengzhen/Blog/blob/master/后台常用系统调用性能总结.md)
 - [Protobuf协议设计](https://github.com/zfengzhen/Blog/blob/master/protobuf%E5%8D%8F%E8%AE%AE%E8%AE%BE%E8%AE%A1.md)
 - [《Linux Programming Interface》读书笔记](https://github.com/zfengzhen/Blog/blob/master/%E3%80%8Alinux_programming_interface%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.md)  

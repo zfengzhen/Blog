@@ -95,6 +95,7 @@ class LIBPROTOBUF_EXPORT WireFormatLite {
 }
 ```
 
-通过这两个类可以写一个只读取某个tag值的工具类ProtobufReader，只读取你想要的字段，而且性能非常好。  
+通过这两个类可以写一个只读取某个tag值的工具类ProtobufReader，只读取你想要的字段，而且性能非常好。 
+我已经写了一个，参见[ProtobufReader]( https://github.com/zfengzhen/FullTest/blob/master/src/protobuf_test/protobuf_reader.h)   
 写了个测试用例，结果如下：  
 ![](https://github.com/zfengzhen/Blog/blob/master/img/protobuf懒读取_测试结果.jpg)   

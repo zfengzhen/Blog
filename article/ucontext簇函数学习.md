@@ -31,7 +31,7 @@ typedef struct ucontext {
 如果上下文是**getcontext()**产生的，切换到该上下文，程序的执行在**getcontext()**后继续执行。  
 如果上下文被**makecontext()**产生的，切换到该上下文，程序的执行切换到**makecontext()**调用所指定的第二个参数的函数上。当该函数返回时，我们继续传入**makecontext()**中的第一个参数的上下文中**uc_link**所指向的上下文。如果是NULL，程序结束。  
 ##返回值    
-成功时，**getcontext()**返回0，s**etcontext()**不返回。错误时，都返回-1并且赋值合适的errno。  
+成功时，**getcontext()**返回0，**setcontext()**不返回。错误时，都返回-1并且赋值合适的errno。  
 ##注意  
 这个机制最早的化身是**setjmp/longjmp**机制。但是它们没有定义处理信号的上下文，下一步就出了**sigsetjmp/siglongjmp**。当前这套机制给予了更多的控制权。但是另一方面，没有简单的方法去探明**getcontext()**的返回是第一次调用还是通过**setcontext()**调用。用户不得不发明一套他自己的书签的数据，并且当寄存器恢复时，register声明的变量不会恢复（寄存器变量）。  
 当信号发生时，当前的用户上下文被保存，一个新的内核为信号处理器产生的上下文被创建。不要在信号处理器中使用**longjmp**:它是未定义的行为。使用**siglongjmp()**或者**setcontext()**替代。  

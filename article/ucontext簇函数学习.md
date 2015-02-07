@@ -120,7 +120,7 @@ main (void)
 
 ucontext性能小试：  
 -----------   
-允许环境为我的mac下通过虚拟机开启的centos64位系统，不代表一般情况，正常在linux实体机上应该会好很多吧  
+运行环境为我的mac下通过虚拟机开启的centos64位系统，不代表一般情况，正常在linux实体机上应该会好很多吧  
 
 - 1 单纯的getcontext:  
 function[ **getcontext(&ctx)** ] count[ **10000000** ]  

@@ -110,26 +110,26 @@ main (void)
 
 代码试用总结：  
 -----------   
-1 makecontext之前必须调用getcontext初始化context，否则会段错误core  
-2 makecontext之前必须给uc_stack分配栈空间，否则也会段错误core  
-3 makecontext之前如果需要上下文恢复到调用前，则必须设置uc_link以及通过swapcontext进行切换  
-4 getcontext产生的context为当前整个程序的context，而makecontext切换到的context为新函数独立的context，但setcontext切换到getcontext的context时，getcontext所在的函数退出时，并不需要uc_link的管理，依赖于该函数是在哪被调用的，整个栈会向调用者层层剥离  
-5 不产生新函数的上下文切换指需要用到getcontext和setcontext  
-6 产生新函数的上下文切换需要用到getcontext，makecontext和swapcontext  
+- 1 makecontext之前必须调用getcontext初始化context，否则会段错误core  
+- 2 makecontext之前必须给uc_stack分配栈空间，否则也会段错误core  
+- 3 makecontext之前如果需要上下文恢复到调用前，则必须设置uc_link以及通过swapcontext进行切换  
+- 4 getcontext产生的context为当前整个程序的context，而makecontext切换到的context为新函数独立的context，但setcontext切换到getcontext的context时，getcontext所在的函数退出时，并不需要uc_link的管理，依赖于该函数是在哪被调用的，整个栈会向调用者层层剥离   
+- 5 不产生新函数的上下文切换指需要用到getcontext和setcontext  
+- 6 产生新函数的上下文切换需要用到getcontext，makecontext和swapcontext  
 
 
 ucontext性能小试：  
 -----------   
 允许环境为我的mac下通过虚拟机开启的centos64位系统，不代表一般情况，正常在linux实体机上应该会好很多吧  
 
-1 单纯的getcontext:  
+- 1 单纯的getcontext:  
 function[ **getcontext(&ctx)** ] count[ **10000000** ]  
-cost[ 1394.88 ms] avg_cost[ **0.14** us]  
+cost[ **1394.88** ms] avg_cost[ **0.14** us]  
 total CPU time[ **1380.00** ms] avg[ **0.14** us]  
 user CPU time[ **560.00** ms] avg[ **0.06** us]  
 system CPU time[ **820.00** ms] avg[ **0.08** us]  
 
-2 新函数的协程调用  
+- 2 新函数的协程调用  
 通过getcontext和对uc_link以及uc_stack赋值，未了不增加其他额外开销，uc_stack为静态字符串数组分配，运行时不申请，makecontext中的函数foo为空函数，调用swapcontext切换协程调用测试  
 function[ **getcontext_makecontext_swapcontext()** ] count[ **1000000** ]  
 cost[ **544.55** ms] avg_cost[ **0.54** us]  

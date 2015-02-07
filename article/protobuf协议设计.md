@@ -1,4 +1,5 @@
 # Protobuf协议设计
+**作者: fergus (zfengzhen@gmail.com)**    
 
 ## 采用extension  
 cs_msg.proto   

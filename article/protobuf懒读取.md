@@ -1,4 +1,5 @@
 # ProtoBuf懒读取  
+**作者: fergus (zfengzhen@gmail.com)**    
 
 **我所遇到需要用到ProtoBuf懒读取的两种情况**  
 1 采用纯Protobuf进行通信的proxy在中转数据的时候，只需要读取包中的某几个字段，比如中转数据的方式（平均分发，随机分发，按key取余分发），发送数据的server地址（后端worker进程处理后可能需要直接给请求服务的server回包），这个时候需要懒读取需要的字段，而不去全部解析整个Protobuf，导致性能下降      

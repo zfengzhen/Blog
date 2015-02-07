@@ -1,4 +1,5 @@
-# 《Linux Programming Interface》读书笔记
+# 《Linux Programming Interface》读书笔记  
+**作者: fergus (zfengzhen@gmail.com)**    
 
 ## 目录 
 

@@ -1,4 +1,5 @@
 # LuaTinker VS tolua++  
+**作者: fergus (zfengzhen@gmail.com)**    
 
 lua原生提供注册C函数的方式对C中的函数进行调用.   
 C++面向对象的项目都需要一套lua OOD的封装.  

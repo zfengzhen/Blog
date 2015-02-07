@@ -1,4 +1,5 @@
 # gdb调试coredump  
+**作者: fergus (zfengzhen@gmail.com)**    
  
 ## coredump开启: 
 

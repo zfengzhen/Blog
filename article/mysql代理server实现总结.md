@@ -1,4 +1,5 @@
 # mysql代理server实现总结  
+**作者: fergus (zfengzhen@gmail.com)**    
 
 ## 需求:
 假设某个逻辑server为单进程异步模式, 在这种情况下不能直接去访问mysql数据库, 否则会阻塞逻辑server. 这个时候需要单独拉出一个msyql的代理server, 使得逻辑server通过协议方式去访问mysql代理server, 实现数据库的异步交互.(后续mysql代理server称为**datasvr**, 逻辑server称为**logicsvr**)

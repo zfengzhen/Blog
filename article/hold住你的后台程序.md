@@ -1,4 +1,5 @@
 # hold住你的后台程序
+**作者: fergus (zfengzhen@gmail.com)**    
 
 ## 简介  
 *  hold住你的后台程序，心中自然无码

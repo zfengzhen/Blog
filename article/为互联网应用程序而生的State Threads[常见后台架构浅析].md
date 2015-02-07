@@ -1,4 +1,5 @@
 # 为互联网应用程序而生的State Threads[常见后台架构浅析]  
+**作者: fergus (zfengzhen@gmail.com)**    
 
 本文翻译来自[State Threads介绍](http://state-threads.sourceforge.net/docs/st.html)  
 

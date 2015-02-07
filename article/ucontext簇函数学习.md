@@ -131,10 +131,10 @@ system CPU time[ **820.00** ms] avg[ **0.08** us]
 
 2 新函数的协程调用  
 通过getcontext和对uc_link以及uc_stack赋值，未了不增加其他额外开销，uc_stack为静态字符串数组分配，运行时不申请，makecontext中的函数foo为空函数，调用swapcontext切换协程调用测试  
-function[ **getcontext_makecontext_swapcontext()** ] count[ **1000000** ]
-cost[ **544.55** ms] avg_cost[ **0.54** us]
-total CPU time[ **550.00** ms] avg[ **0.55** us]
-user CPU time[ **280.00** ms] avg[ **0.28** us]
-system CPU time[ **270.00** ms] avg[ **0.27** us]
+function[ **getcontext_makecontext_swapcontext()** ] count[ **1000000** ]  
+cost[ **544.55** ms] avg_cost[ **0.54** us]  
+total CPU time[ **550.00** ms] avg[ **0.55** us]  
+user CPU time[ **280.00** ms] avg[ **0.28** us]  
+system CPU time[ **270.00** ms] avg[ **0.27** us]  
 
 每秒**百万级别**的调用性能。  

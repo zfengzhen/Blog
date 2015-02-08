@@ -25,7 +25,7 @@ typedef struct ucontext {
     ...
 } ucontext_t;
 ```  
-**sigset_t**和**stack_t**定义在<signal.h>头文件中。**uc_link**指向当前的上下文结束时要恢复到的上下文（只在当前上下文是由**makecontext**创建时，个人理解：只有makecontext创建新函数上下文时需要修改），**uc_sigmask**表示这个上下文要阻塞的信号集合（参见**sigprocmask**），**uc_stack**是这个上下文使用的栈（个人理解：非**makecontext**创建的上下文不要修改），**uc_mcontext**是机器特定的保存上下文的表示，包括调用协程的机器寄存器。  
+**sigset_t**和**stack_t**定义在\<signal.h\>头文件中。**uc_link**指向当前的上下文结束时要恢复到的上下文（只在当前上下文是由**makecontext**创建时，个人理解：只有makecontext创建新函数上下文时需要修改），**uc_sigmask**表示这个上下文要阻塞的信号集合（参见**sigprocmask**），**uc_stack**是这个上下文使用的栈（个人理解：非**makecontext**创建的上下文不要修改），**uc_mcontext**是机器特定的保存上下文的表示，包括调用协程的机器寄存器。  
 **getcontext()**函数初始化**ucp**所指向的结构体，填充当前有效的上下文。  
 **setcontext()**函数恢复用户上下文为**ucp**所指向的上下文。成功调用不会返回。**ucp**所指向的上下文应该是**getcontext()**或者**makeontext()**产生的。  
 如果上下文是**getcontext()**产生的，切换到该上下文，程序的执行在**getcontext()**后继续执行。  

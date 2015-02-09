@@ -138,3 +138,10 @@ user CPU time[ **280.00** ms] avg[ **0.28** us]
 system CPU time[ **270.00** ms] avg[ **0.27** us]  
 
 每秒**百万级别**的调用性能。  
+
+ucontext协程的实际使用：  
+-----------   
+将getcontext，makecontext，swapcontext封装成一个类似于lua的协同式协程，需要代码中主动yield释放出CPU。  
+协程的栈采用malloc进行堆分配，分配后的空间在64位系统中和栈的使用一致，地址递减使用，uc_stack.uc_size设置的大小好像并没有多少实际作用，使用中一旦超过已分配的堆大小，会继续向地址小的方向的堆去使用，这个时候就会造成堆的溢出使用，更改之前在堆上分配的数据，造成各种不可预测的行为，coredump后也找不到实际原因。  
+对使用协程函数的栈大小的预估，协程函数中调用其他所有的api的中的局部变量的开销都会分配到申请给协程使用的内存上，会有一些不可预知的变量，比如调用第三方API，第三方API中有非常大的变量，实际使用过程中开始时可以采用mmap分配内存，对分配的内存设置GUARD_PAGE进行mprotect保护，对于内存溢出，准确判断位置，适当调整需要分配的栈大小。  
+![](https://github.com/zfengzhen/Blog/blob/master/img/ucontext簇函数学习_实际使用.png)  

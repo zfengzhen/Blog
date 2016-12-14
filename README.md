@@ -3,6 +3,7 @@ Fergus Blog
 
 My Blog &amp; Thanks Github!
 
+- [移动网络下的动作格斗类PVP游戏网络同步方案](https://github.com/zfengzhen/Blog/blob/master/article/移动网络下的动作格斗类PVP游戏网络同步方案.md)  
 - [AI实现思考](https://github.com/zfengzhen/Blog/blob/master/article/AI实现思考.md)  
 - [ucontext簇函数学习](https://github.com/zfengzhen/Blog/blob/master/article/ucontext簇函数学习.md)  
 - [Protobuf懒读取](https://github.com/zfengzhen/Blog/blob/master/article/protobuf%E6%87%92%E8%AF%BB%E5%8F%96.md)  

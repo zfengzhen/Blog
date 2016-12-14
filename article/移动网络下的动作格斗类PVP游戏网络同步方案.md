@@ -9,10 +9,10 @@
    
 需要关注的两个特性：**丢包**和**时延**  
    
-在此基础上提出了[逻辑层被动拉取式智能多发可靠UDP帧同步PVP方案](https://zh.wikipedia.org/wiki/%E6%97%B6%E5%BB%B6)  
+在此基础上提出了[逻辑层被动拉取式智能多发可靠UDP帧同步PVP方案](https://github.com/zfengzhen/Blog/blob/master/article/%E7%A7%BB%E5%8A%A8%E7%BD%91%E7%BB%9C%E4%B8%8B%E7%9A%84%E5%8A%A8%E4%BD%9C%E6%A0%BC%E6%96%97%E7%B1%BBPVP%E6%B8%B8%E6%88%8F%E7%BD%91%E7%BB%9C%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88.md#逻辑层被动拉取式智能多发可靠udp帧同步pvp方案)  
 
 ##丢包  
-![](https://github.com/zfengzhen/Blog/blob/master/img/network_pkg_loss.jpg)  
+![](https://github.com/zfengzhen/Blog/blob/master/img/network_pkg_loss.png)  
 **丢包会导致数据重传**  
 
 **TCP重传处理**  
@@ -24,7 +24,7 @@ UDP需要自己定义丢包后的处理机制，通过浪费点带宽（移动�
 ##时延  
 参见[维基百科](https://zh.wikipedia.org/wiki/%E6%97%B6%E5%BB%B6)  
 参见《计算机网络--自顶向下方法》  
-![](https://github.com/zfengzhen/Blog/blob/master/img/network_delay.jpg)  
+![](https://github.com/zfengzhen/Blog/blob/master/img/network_delay.png)  
 ##游戏PVP方案  
    
 ###权威服务器  
@@ -99,7 +99,7 @@ UDP需要自己定义丢包后的处理机制，通过浪费点带宽（移动�
 ##逻辑层被动拉取式智能多发可靠UDP帧同步PVP方案  
    
 ###关键字拆解  
-![](https://github.com/zfengzhen/Blog/blob/master/img/network_pvp.jpg)
+![](https://github.com/zfengzhen/Blog/blob/master/img/network_pvp.png)
    
 注：这里的帧同步采用不锁帧的模式，不考虑绝对公平竞技，网络卡的玩家不影响对手，逻辑帧按服务器时间轴驱动。
 
